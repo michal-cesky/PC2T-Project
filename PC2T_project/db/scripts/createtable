@@ -1,0 +1,10 @@
+CREATE TABLE student(
+                        id INTEGER PRIMARY KEY NOT NULL,
+                        name VARCHAR(45),
+                        surname VARCHAR(45),
+                        day INTEGER,
+                        month INTEGER,
+                        year INTEGER,
+                        grupe VARCHAR,
+                        grade VARCHAR
+);

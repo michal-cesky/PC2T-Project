@@ -1,0 +1,1 @@
+0,cesky,cesky,6,12,2000,technical,[]
