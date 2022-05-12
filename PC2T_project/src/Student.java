@@ -12,7 +12,6 @@ public abstract class Student{
     private int average;
     private ArrayList<Integer> grade;
 
-
     public Student(int id, String name, String surname, int day, int month, int year, String grupe)
     {
         this.id = id;

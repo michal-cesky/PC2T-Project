@@ -1,13 +1,10 @@
 import java.io.*;
-import java.sql.ClientInfoStatus;
 import java.util.*;
 import java.util.stream.Stream;
 
 public class Seznam {
 
     private HashMap<Integer, Student> valuesHashMap = new HashMap<>();
-
-    //List<Integer> intList = null;
 
     int id;
     String group;
@@ -39,21 +36,13 @@ public class Seznam {
             valuesHashMap.get(id).setGradeToArrayList(grade);
 
         } else {
-            System.out.println("Student neexistuje");
+            System.out.println("Student does not exist");
         }
-    }
-
-    public void setGradefromSQL (int id, List<Integer> intList)
-    {
-        try {
-            valuesHashMap.get(id).setGradeToArrayList((ArrayList<Integer>) intList);
-        } catch (NumberFormatException e) {
-            }
     }
 
     public void delStudent(int id)
     {
-        System.out.println("Student: " + id +  " jmeno: " + valuesHashMap.get(id).getName() + " prijmeni: " + valuesHashMap.get(id).getSurname() + " Rok narozeni: " + valuesHashMap.get(id).getYear());
+        System.out.println("Student: " + id +  " Name: " + valuesHashMap.get(id).getName() + " Surname: " + valuesHashMap.get(id).getSurname() + " Year of boarn: " + valuesHashMap.get(id).getYear());
         valuesHashMap.remove(id);
     }
 
@@ -61,43 +50,43 @@ public class Seznam {
     {
         if(valuesHashMap.containsKey(id)){
 
-            System.out.println("Student: " + id +  " \tjmeno: " + valuesHashMap.get(id).getName() + " \tprijmeni: " + valuesHashMap.get(id).getSurname() + " \tRok narozeni: " + valuesHashMap.get(id).getYear() +
+            System.out.println("Student: " + id +  " \tName: " + valuesHashMap.get(id).getName() + " \tSurname: " + valuesHashMap.get(id).getSurname() + " \tYear of boarn: " + valuesHashMap.get(id).getYear() +
                     " \tAverage grades: " + valuesHashMap.get(id).getAverage());
         }
         else {
-            System.out.println("Student neexistuje");
+            System.out.println("Student does not exist");
         }
         return "";
     }
 
-    public String getDovednost(int id)
+    public String getSkill(int id)
     {
         if(valuesHashMap.containsKey(id))
         {
             if(valuesHashMap.get(id).getGrupe().equals("technical"))
             {
                 id = valuesHashMap.get(id).getID();
-                System.out.println("Student: " + id + " \tjmeno: " + valuesHashMap.get(id).getName() + " \tprijmeni: " + valuesHashMap.get(id).getSurname() +
-                        " \tRok narozeni: " + valuesHashMap.get(id).getYear() + " \tJe rok prestupny? " + PrestupnyRok(id) + " ");
+                System.out.println("Student: " + id + " \tName: " + valuesHashMap.get(id).getName() + " \tSurname: " + valuesHashMap.get(id).getSurname() +
+                        " \tYear of boarn: " + valuesHashMap.get(id).getYear() + " \tIs year leep? " + PrestupnyRok(id) + " ");
             }
             else if(valuesHashMap.get(id).getGrupe().equals("humanitarian"))
             {
                 id = valuesHashMap.get(id).getID();
-                System.out.println("Student: " + id + " \tjmeno: " + valuesHashMap.get(id).getName() + " \tprijmeni: " + valuesHashMap.get(id).getSurname() +
-                        " \tDen narozeni: " + valuesHashMap.get(id).getDay() + "." + valuesHashMap.get(id).getMonth() + "." + valuesHashMap.get(id).getYear() + " \tZnameni zvěrokruhu: " + Znameni(id));
+                System.out.println("Student: " + id + " \tName: " + valuesHashMap.get(id).getName() + " \tSurname: " + valuesHashMap.get(id).getSurname() +
+                        " \tDate of birthday: " + valuesHashMap.get(id).getDay() + "." + valuesHashMap.get(id).getMonth() + "." + valuesHashMap.get(id).getYear() + " \tZodiac sign: " + Znameni(id));
             }
             else if(valuesHashMap.get(id).getGrupe().equals("combined"))
             {
                 id = valuesHashMap.get(id).getID();
-                System.out.println("Student: " + id + " \tjmeno: " + valuesHashMap.get(id).getName() + " \tprijmeni: " + valuesHashMap.get(id).getSurname() +
-                        " \tDen narozeni: " + valuesHashMap.get(id).getDay() + "." + valuesHashMap.get(id).getMonth() + "." + valuesHashMap.get(id).getYear() + " \tJe rok prestupny? " + PrestupnyRok(id) + " \tZnameni zvěrokruhu: " + Znameni(id));
+                System.out.println("Student: " + id + " \tName: " + valuesHashMap.get(id).getName() + " \tSurname: " + valuesHashMap.get(id).getSurname() +
+                        " \tDate of birthday: " + valuesHashMap.get(id).getDay() + "." + valuesHashMap.get(id).getMonth() + "." + valuesHashMap.get(id).getYear() + " \tIs year leep? " + PrestupnyRok(id) + " \tZodiac sign: " + Znameni(id));
             }
             else System.out.println("error");
             return "";
         }
         else
         {
-            System.out.println("Student neexistuje");
+            System.out.println("Student does not exist");
             return "";
         }
     }
@@ -110,25 +99,25 @@ public class Seznam {
 
         Collections.sort(newHashMapList, Comparator.comparing(Student::getSurname));
 
-        System.out.println("technickz oboor");
+        System.out.println("Technical specialization");
         for (Student i : newHashMapList) {
             if (i.getGrupe().equals("technical")) {
-                System.out.println("Student: " + i.getID() + " \tJmeno: " + i.getName() + " \tPrijmeni: " + i.getSurname() + " \tDatum narozeni: " + i.getDay() + "." +
+                System.out.println("Student: " + i.getID() + " \tName: " + i.getName() + " \tSurname: " + i.getSurname() + " \tDate of birthday: " + i.getDay() + "." +
                         i.getMonth() + "." + i.getYear() + " \tAverage grades: " + i.getAverage());
             }
         }
 
-        System.out.println("Humanitarni obor");
+        System.out.println("Humanitarian specialization");
         for (Student i : newHashMapList) {
             if (i.getGrupe().equals("humanitarian")) {
-                System.out.println("Student: " + i.getID() + " \tJmeno: " + i.getName() + " \tPrijmeni: " + i.getSurname() + " \tDatum narozeni: " + i.getDay() + "." +
+                System.out.println("Student: " + i.getID() + " \tName: " + i.getName() + " \tSurname: " + i.getSurname() + " \tDate of birthday: " + i.getDay() + "." +
                         i.getMonth() + "." + i.getYear() + " \tAverage grades: " + i.getAverage());
             }
         }
-        System.out.println("Kombinovane studium");
+        System.out.println("Combined specialization");
         for (Student i : newHashMapList) {
             if (i.getGrupe().equals("combined")) {
-                System.out.println("Student: " + i.getID() + " \tJmeno: " + i.getName() + " \tPrijmeni: " + i.getSurname() + " \tDatum narozeni: " + i.getDay() + "." +
+                System.out.println("Student: " + i.getID() + " \tName: " + i.getName() + " \tSurname: " + i.getSurname() + " \tDate of birthday: " + i.getDay() + "." +
                         i.getMonth() + "." + i.getYear() + " \tAverage grades: " + i.getAverage());
             }
         }
@@ -138,10 +127,11 @@ public class Seznam {
     {
         double studyAverageTechnical = 0;
         double studyAverageHumanitarian = 0;
+
         ArrayList<Student> ListStudyAvrtageTechnical = new ArrayList<>();
         ArrayList<Student> ListStudyAverageHumanitaria = new ArrayList<>();
+
         for (Student i : valuesHashMap.values()) {
-            if (i.getAverage() == 0) continue;
             if (i.getGrupe().equals("technical")) {
                 ListStudyAvrtageTechnical.add(i);
             } else if (i.getGrupe().equals("humanitarian")){
@@ -225,13 +215,9 @@ public class Seznam {
             e.printStackTrace();
         }
         finally {
-
             try {
-
-                // always close the writer
                 bf.close();
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
             }
         }
     }
@@ -289,7 +275,6 @@ public class Seznam {
             System.out.println("file not found");
         }
         finally {
-        // Always close the BufferedReader
         if (br != null) {
             try {
                 br.close();
@@ -300,14 +285,30 @@ public class Seznam {
         }
     }
 
+    public void setGradefromSQL (int id, List<Integer> intList)
+    {
+        try {
+            valuesHashMap.get(id).setGradeToArrayList((ArrayList<Integer>) intList);
+        } catch (NumberFormatException e) {
+        }
+    }
+
+    public HashMap<Integer, Student> getValuesHashMap(){
+        return valuesHashMap;
+    }
+
+    public void addtoHashMapfromSQL(int id, Student student){
+        valuesHashMap.put(id, student);
+    }
+
     public String PrestupnyRok(int id)
     {
         int year;
         year = valuesHashMap.get(id).getYear();
         if ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0))
-            return "ano";
+            return "yes";
         else
-            return "ne";
+            return "no";
     }
 
     public String Znameni(int id)
@@ -325,7 +326,7 @@ public class Seznam {
             return "Pisces";
         }
         else if ((month ==  3 && day >= 20 && day <= 31) || (month ==  4 && day >= 1 && day <= 19)){
-        return "Aries";
+            return "Aries";
         }
         else if ((month ==  4 && day >= 20 && day <= 30) || (month ==  5 && day >= 1 && day <= 20)) {
             return "Taurus";
@@ -354,14 +355,6 @@ public class Seznam {
         else{
             return "Wrong date";
         }
-    }
-
-    public HashMap<Integer, Student> getValuesHashMap(){
-        return valuesHashMap;
-    }
-
-    public void addtoHashMapfromSQL(int id, Student student){
-        valuesHashMap.put(id, student);
     }
 
 }

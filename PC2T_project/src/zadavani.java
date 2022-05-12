@@ -1,103 +1,102 @@
 
-
 import java.util.Scanner;
 
 public class zadavani {
 
     public static int OnlyNumbers(Scanner sc) {
-        int cislo = 0;
+        int number = 0;
         try {
-            cislo = sc.nextInt();
+            number = sc.nextInt();
         } catch (Exception e) {
-            System.out.println("Nastala vyjimka typu \n" + e.toString() + "");
-            System.out.println("zadejte prosim cele cislo!!!");
+            System.out.println("An exception of type occurred \n" + e.toString() + "");
+            System.out.println("Please insert intiger ");
             sc.nextLine();
-            cislo = OnlyNumbers(sc);
+            number = OnlyNumbers(sc);
         }
-        return cislo;
+        return number;
     }
 
     public static int Day(Scanner sc) {
-        int cislo = 0;
+        int number = 0;
         try {
-            cislo = sc.nextInt();
-            if (cislo < 1 || cislo > 31){
-                throw new RangeException(cislo);
+            number = sc.nextInt();
+            if (number < 1 || number > 31){
+                throw new RangeException(number);
             }
         } catch (RangeException e) {
             System.out.println("wrong date");
             sc.nextLine();
-            cislo = Day(sc);
+            number = Day(sc);
         }
         catch (Exception e) {
-            System.out.println("Nastala vyjimka typu \n" + e.toString() + "");
-            System.out.println("zadejte prosim cele cislo!!!");
+            System.out.println("An exception of type occurred \n" + e.toString() + "");
+            System.out.println("Please insert intiger ");
             sc.nextLine();
-            cislo = Day(sc);
+            number = Day(sc);
         }
-        return cislo;
+        return number;
     }
 
     public static int Month(Scanner sc) {
-        int cislo = 0;
+        int number = 0;
         try {
-            cislo = sc.nextInt();
-            if (cislo < 1 || cislo > 12){
-                throw new RangeException(cislo);
+            number = sc.nextInt();
+            if (number < 1 || number > 12){
+                throw new RangeException(number);
             }
         } catch (RangeException e) {
             System.out.println("wrong date");
             sc.nextLine();
-            cislo = Month(sc);
+            number = Month(sc);
         }
         catch (Exception e) {
-            System.out.println("Nastala vyjimka typu \n" + e.toString() + "");
-            System.out.println("zadejte prosim cele cislo!!!");
+            System.out.println("An exception of type occurred \n" + e.toString() + "");
+            System.out.println("Please insert intiger");
             sc.nextLine();
-            cislo = Month(sc);
+            number = Month(sc);
         }
-        return cislo;
+        return number;
     }
 
     public static int Year(Scanner sc) {
-        int cislo = 0;
+        int number = 0;
         try {
-            cislo = sc.nextInt();
-            if (cislo < 1900 || cislo > 2100){
-                throw new RangeException(cislo);
+            number = sc.nextInt();
+            if (number < 1900 || number > 2100){
+                throw new RangeException(number);
             }
         } catch (RangeException e) {
             System.out.println("wrong date");
             sc.nextLine();
-            cislo = Year(sc);
+            number = Year(sc);
         }
         catch (Exception e) {
-            System.out.println("Nastala vyjimka typu \n" + e.toString() + "");
-            System.out.println("zadejte prosim cele cislo!!!");
+            System.out.println("An exception of type occurred \n" + e.toString() + "");
+            System.out.println("Please insert intiger");
             sc.nextLine();
-            cislo = Year(sc);
+            number = Year(sc);
         }
-        return cislo;
+        return number;
     }
 
     public static int Grade(Scanner sc) {
-        int cislo = 0;
+        int number = 0;
         try {
-            cislo = sc.nextInt();
-            if (cislo < 1 || cislo > 5){
-                throw new RangeException(cislo);
+            number = sc.nextInt();
+            if (number < 1 || number > 5){
+                throw new RangeException(number);
             }
         } catch (RangeException e) {
             System.out.println("wrong range");
             sc.nextLine();
-            cislo = Grade(sc);
+            number = Grade(sc);
         }
         catch (Exception e) {
-            System.out.println("Nastala vyjimka typu \n" + e.toString() + "");
-            System.out.println("zadejte prosim cele cislo!!!");
+            System.out.println("An exception of type occurred \n" + e.toString() + "");
+            System.out.println("Please insert intiger");
             sc.nextLine();
-            cislo = Grade(sc);
+            number = Grade(sc);
         }
-        return cislo;
+        return number;
     }
 }

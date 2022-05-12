@@ -23,21 +23,19 @@ public class InsertQueries {
             prStmt.setString(8, student.saveGradeToDatabaze());
 
             prStmt.executeUpdate();
-            System.out.println("Nový uživatel byl vložen do databáze!");
+            System.out.println("A new user has been added to the database");
         } catch (SQLException e) {
-            System.out.println("Uživatel už byl vložen nebo jste zadali špatně SQL příkaz INSERT");
+            System.out.println("The user has already been entered or you entered the wrong INSERT SQL statement");
             // e.printStackTrace();
         }
     }
-        public static void insert (Seznam students){
 
-            for (Student student : students.getValuesHashMap().values()) {
-                InsertQueries.insertNewUser(student);
+    public static void insert (Seznam students){
+
+        for (Student student : students.getValuesHashMap().values()) {
+            InsertQueries.insertNewUser(student);
             }
-
-        }
-
-
     }
+}
 
 

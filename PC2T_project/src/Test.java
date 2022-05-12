@@ -1,18 +1,15 @@
 
 import db.DBConnection;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.Scanner;
+
 public class Test {
 
     public static void main(String[] args) throws IOException, SQLException {
 
         Scanner sc = new Scanner(System.in);
-        Seznam mojeDatabaze = new Seznam();
+        Seznam myDatabase = new Seznam();
 
         int id;
         int grade;
@@ -21,27 +18,27 @@ public class Test {
 
         while (run) {
             System.out.println("Vyberte pozadovanou cinnost:");
-            System.out.println("1 .. vytvoreni noveho studenta");
-            System.out.println("2 .. zadani nove znamky");
-            System.out.println("3 .. propusteni studenta");
-            System.out.println("4 .. nalezeni studenta");
-            System.out.println("5 .. ziskani dovednosti");
-            System.out.println("6 .. abecedne razeny vypis");
-            System.out.println("7 .. study average in grupes");
-            System.out.println("8 .. pocet studentu ve skupinach");
-            System.out.println("9 .. save from file");
-            System.out.println("10 .. load to file");
-            System.out.println("11 .. save to SQL");               //uložení do SQL
-            System.out.println("12 .. load from SQL");               //načtení z SQL
+            System.out.println("1 .. set new student");
+            System.out.println("2 .. set new grade");
+            System.out.println("3 .. fired student");
+            System.out.println("4 .. find student");
+            System.out.println("5 .. get skill");
+            System.out.println("6 .. alphabetical order extract");
+            System.out.println("7 .. study average in groups");
+            System.out.println("8 .. students group count");
+            System.out.println("9 .. save to file");
+            System.out.println("10 .. load from file");
+            System.out.println("11 .. save to SQL");
+            System.out.println("12 .. load from SQL");
             System.out.println("13 .. close app");
             System.out.println("14 .. db connect chack");
 
             choice = zadavani.OnlyNumbers(sc);
             switch (choice) {
                 case 1:
-                    System.out.println("1 .. technicky obor");
-                    System.out.println("2 .. humanitni obor");
-                    System.out.println("3 .. kombinovane studium");
+                    System.out.println("1 .. Technical specialization");
+                    System.out.println("2 .. Humanitarian specialization");
+                    System.out.println("3 .. Combined specialization");
                     String name;
                     String surname;
                     int day;
@@ -50,113 +47,113 @@ public class Test {
                     choice = zadavani.OnlyNumbers(sc);
                     switch (choice){
                         case 1:
-                            System.out.print("Zadejte name surname datum narozeni (day, month, year) studenta:\n");
+                            System.out.print("Insert students name surname birthdate (day, month, year):\n");
                             name = sc.next();
                             surname = sc.next();
                             day = zadavani.Day(sc);
                             month = zadavani.Month(sc);
                             year = zadavani.Year(sc);
-                            mojeDatabaze.setStudentTO(name, surname, day, month, year);
+                            myDatabase.setStudentTO(name, surname, day, month, year);
                             break;
                         case 2:
-                            System.out.print("Zadejte name surname datum narozeni (day, month, year) studenta:\n");
+                            System.out.print("Insert students name surname birthdate (day, month, year):\n");
                             name = sc.next();
                             surname = sc.next();
                             day = zadavani.Day(sc);
                             month = zadavani.Month(sc);
                             year = zadavani.Year(sc);
-                            mojeDatabaze.setStudentHO(name, surname, day, month, year);
+                            myDatabase.setStudentHO(name, surname, day, month, year);
                             break;
                         case 3:
-                            System.out.print("Zadejte name surname datum narozeni (day, month, year) studenta:\n");
+                            System.out.print("Insert students name surname birthdate (day, month, year):\n");
                             name = sc.next();
                             surname = sc.next();
                             day = zadavani.Day(sc);
                             month = zadavani.Month(sc);
                             year = zadavani.Year(sc);
-                            mojeDatabaze.setStudentKS(name, surname, day, month, year);
+                            myDatabase.setStudentKS(name, surname, day, month, year);
                             break;
                     }
                     break;
                 case 2:
                     Student info = null;
-                    System.out.println("Zadejte index studenta");
+                    System.out.println("Insert students ID");
                     sc.nextLine();
                     id = zadavani.OnlyNumbers(sc);
-                    System.out.println("Zadejte znamku");
+                    System.out.println("Set grade");
                     sc.nextLine();
                     grade = zadavani.Grade(sc);
-                    mojeDatabaze.setGrade(id, grade);
+                    myDatabase.setGrade(id, grade);
                     try {
-                        System.out.println(mojeDatabaze.getStudent(id));
+                        System.out.println(myDatabase.getStudent(id));
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        System.out.println("Vybrana polozka mimo rozsah databaze|");
+                        System.out.println("Selected item outside the scope of the database");
                     } catch (NullPointerException e) {
-                        System.out.println("Vybrana polozka neexistuje");
+                        System.out.println("The selected istudent does not exist");
                     }
                     break;
 
                 case 3:
-                    System.out.println("Zadejte index studenta");
+                    System.out.println("Insert students ID");
                     sc.nextLine();
                     id = zadavani.OnlyNumbers(sc);
-                    mojeDatabaze.delStudent(id);
-                    System.out.println("Student byl propusten");
+                    myDatabase.delStudent(id);
+                    System.out.println("Student was fired");
                     try {
-                        System.out.println(mojeDatabaze.getStudent(id));
+                        System.out.println(myDatabase.getStudent(id));
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        System.out.println("Vybrana polozka mimo rozsah databaze|");
+                        System.out.println("Selected item outside the scope of the database");
                     } catch (NullPointerException e) {
-                        System.out.println("Vybrana polozka neexistuje");
+                        System.out.println("The selected istudent does not exist");
                     }
                     break;
                 case 4:
-                    System.out.println("Zadejte index studenta");
+                    System.out.println("Insert students ID");
                     sc.nextLine();
                     id = zadavani.OnlyNumbers(sc);
                     try {
-                        System.out.println(mojeDatabaze.getStudent(id));
+                        System.out.println(myDatabase.getStudent(id));
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        System.out.println("Vybrana polozka mimo rozsah databaze|");
+                        System.out.println("Selected item outside the scope of the database");
                     } catch (NullPointerException e) {
-                        System.out.println("Vybrana polozka neexistuje");
+                        System.out.println("The selected istudent does not exist");
                     }
                     break;
                 case 5:
-                    System.out.println("Zadejte index studenta");
+                    System.out.println("Insert students ID");
                     sc.nextLine();
                     id = zadavani.OnlyNumbers(sc);
                     try {
-                        System.out.println(mojeDatabaze.getDovednost(id));
+                        System.out.println(myDatabase.getSkill(id));
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        System.out.println("Vybrana polozka mimo rozsah databaze|");
+                        System.out.println("Selected item outside the scope of the database");
                     } catch (NullPointerException e) {
-                        System.out.println("Vybrana polozka neexistuje");
+                        System.out.println("The selected istudent does not exist");
                     }
                     break;
                 case 6:
-                    mojeDatabaze.Alphabetic();
+                    myDatabase.Alphabetic();
                     break;
 
                 case 7:
-                    mojeDatabaze.studyAverageSubject();
+                    myDatabase.studyAverageSubject();
                     break;
 
                 case 8:
-                    mojeDatabaze.StudentsCount();
+                    myDatabase.StudentsCount();
                     break;
                 case 9:
-                    mojeDatabaze.SaveToFile();
+                    myDatabase.SaveToFile();
                     break;
 
                 case 10:
-                    mojeDatabaze.LoadFormFile();
+                    myDatabase.LoadFormFile();
                     break;
                 case 11:
-                    InsertQueries.insert(mojeDatabaze);
+                    InsertQueries.insert(myDatabase);
                     break;
                 case 12:
-                    mojeDatabaze = SelectQueries.selectUser();
+                    myDatabase = SelectQueries.selectUser();
                     break;
                 case 13:
                     run = false;

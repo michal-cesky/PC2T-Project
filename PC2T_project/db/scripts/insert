@@ -1,6 +1,6 @@
-INSERT INTO student(id, name, surname, day, month, year, grupe, grade) VALUES (0, 'Michal', 'Cesky', 6, 12, 2000, 'technical', '1, 3, 5');
+INSERT INTO student(id, name, surname, day, month, year, grupe, grade) VALUES (2, 'Michal', 'Cesky', 6, 12, 2000, 'technical', '1, 3, 5');
 INSERT INTO student(id, name, surname, day, month, year, grupe, grade) VALUES (1, 'Jiri', 'Jilek', 5, 8, 2001, 'technical', '1, 2');
-INSERT INTO student(id, name, surname, day, month, year, grupe, grade) VALUES (2, 'Karel', 'Beranek', 15, 4, 2000, 'humanitarian', '1, 2, 5');
-INSERT INTO student(id, name, surname, day, month, year, grupe, grade) VALUES (3, 'Radek', 'Vomocil', 4, 9, 2000, 'technical', '');
-INSERT INTO student(id, name, surname, day, month, year, grupe, grade) VALUES (4, 'Jakub', 'Zdrazil', 29, 1, 2001, 'technical', '1, 2,3');
-INSERT INTO student(id, name, surname, day, month, year, grupe, grade) VALUES (5, 'Monika', 'Vlkova', 7, 6, 2001, 'humanitarian', '2');
+INSERT INTO student(id, name, surname, day, month, year, grupe, grade) VALUES (0, 'Karel', 'Beranek', 15, 4, 2000, 'humanitarian', '1, 2, 5');
+INSERT INTO student(id, name, surname, day, month, year, grupe, grade) VALUES (4, 'Radek', 'Vomocil', 4, 9, 2000, 'technical', '');
+INSERT INTO student(id, name, surname, day, month, year, grupe, grade) VALUES (5, 'Jakub', 'Zdrazil', 29, 1, 2001, 'technical', '1, 2, 3');
+INSERT INTO student(id, name, surname, day, month, year, grupe, grade) VALUES (3, 'Monika', 'Vlkova', 7, 6, 2001, 'humanitarian', '2');
